@@ -26,7 +26,7 @@ const SearchForm: React.FC<SearchFormProps> = ({ recommendation, setFilterParams
       })
     }
     allValues.filter_options=filter_options.join('@');
-    if (!allValues.filter_options) delete allValues.filter_options;
+    if (!allValues.filter_options)  allValues.filter_options='';
     delete allValues.filter_options_list;
     setFilterParams(allValues);
   };
@@ -87,7 +87,7 @@ const SearchForm: React.FC<SearchFormProps> = ({ recommendation, setFilterParams
             style={{ margin: '0px 20px' }}
           />
         </FormItem>
-        <FormList name="filter_options_list" style={{display:showFilter?'block':'none'}}>
+        <FormList name="filter_options_list">
           {(fields, {add, remove }) => (
             <>
               {fields.map(({ key, name }) => (
@@ -121,7 +121,7 @@ const SearchForm: React.FC<SearchFormProps> = ({ recommendation, setFilterParams
                 </FormItem>
               ))}
               <FormItem style={{ marginLeft: 100 }}>
-                <Button theme="default" variant="dashed" onClick={() => add({})}>
+                <Button theme="default" variant="dashed" onClick={() => add({})}  style={{display:showFilter?'block':'none'}}>
                   添加过滤条件
                 </Button>
               </FormItem>

@@ -156,6 +156,9 @@ export const recommendationApi = createApi({
         method: 'get',
       }),
       transformResponse: (res: FetchRecommendationResult, meta, arg: FetchRecommendationArgs) => {
+        if(!res.data){
+          return res
+        }
         res.data.items = res.data.items.filter((value) => arg.recommendationType === value.spec.type);
         res.data.items.map((value) => {
           const recommendedValue = value?.status?.recommendedValue;

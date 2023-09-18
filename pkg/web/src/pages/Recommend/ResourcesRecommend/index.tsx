@@ -41,6 +41,7 @@ const fetchTableList=(craneUrl :string,recommendationType:any,filter_options:str
     recommendation = [];
     if (isError) MessagePlugin.error(`${error.status} ${error.error}`);
   }
+  console.log(recommendation)
   return recommendation
 }
 
@@ -80,6 +81,7 @@ export const SelectTable = () => {
       if (filterParams?.namespace) return filterParams?.namespace === recommendation?.namespace;
       return true;
     });
+  console.log(filterResult)
 
   function onSelectChange(value: (string | number)[]) {
     setSelectedRowKeys(value);
