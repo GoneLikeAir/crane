@@ -66,7 +66,7 @@ export const SelectTable = () => {
     filter_options:''
   });
 
-  const filterResult = fetchTableList(craneUrl,RecommendationType.Replicas,filterParams.filter_options)
+  const filterResult = fetchTableList(craneUrl,RecommendationType.Resource,filterParams.filter_options)
     .filter((recommendation:any) => {
       if (filterParams?.name) {
         return new RegExp(`${filterParams.name}.*`).test(recommendation.name);
